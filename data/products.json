@@ -1,0 +1,26 @@
+[
+  {
+    "id": "product-1",
+    "name": "Geometric Armchair",
+    "description": "Ergonomic design meets strict square aesthetics. Crafted with premium sustainable materials and a focus on 0px corner precision.",
+    "price": "$299.00",
+    "image": "https://images.unsplash.com/photo-1592078615290-033ee584e267?auto=format&fit=crop&w=800&q=80",
+    "features": ["Square edges", "Solid oak frame", "High-density foam"]
+  },
+  {
+    "id": "product-2",
+    "name": "Minimalist Workstation",
+    "description": "A desk designed for maximum productivity. Features an 8px grid-aligned surface and seamless brand-blue cable management.",
+    "price": "$450.00",
+    "image": "https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?auto=format&fit=crop&w=800&q=80",
+    "features": ["Modular design", "Integrated power", "Anti-sratch coating"]
+  },
+  {
+    "id": "product-3",
+    "name": "Industrial Bookshelf",
+    "description": "Store your collection on a shelf that embodies the baseline grid. Perfectly consistent 16px vertical spacing between units.",
+    "price": "$180.00",
+    "image": "https://images.unsplash.com/photo-1594620302200-9a762244a156?auto=format&fit=crop&w=800&q=80",
+    "features": ["Powder-coated steel", "Adjustable height", "Square tubing"]
+  }
+]

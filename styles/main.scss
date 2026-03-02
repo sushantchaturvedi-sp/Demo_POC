@@ -1,0 +1,398 @@
+@import 'variables';
+
+// Global Styles
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: $text-color;
+    background-color: $bg-color;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+h1,
+h2,
+h3 {
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 $spacing-24;
+}
+
+.section-title {
+    margin-bottom: $spacing-32;
+    font-size: 2rem;
+    border-left: 8px solid $brand-blue;
+    padding-left: $spacing-16;
+}
+
+.section-divider {
+    border: none;
+    height: 1px;
+    background: $border-color;
+    margin: $spacing-64 0;
+}
+
+// Header
+.site-header {
+    background: $bg-color;
+    padding: $spacing-24;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid $text-color;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    .brand-logo {
+        font-size: 1.5rem;
+    }
+
+    nav ul {
+        display: flex;
+        gap: $spacing-24;
+
+        a {
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: color $transition-speed;
+
+            &:hover {
+                color: $brand-blue;
+            }
+        }
+    }
+}
+
+// Scrollytelling Component
+.scrollytelling-section {
+    .scrolly-container {
+        display: flex;
+        position: relative;
+    }
+
+    .sticky-media {
+        flex: 1;
+        height: 100vh;
+        position: sticky;
+        top: 0;
+        background: #000;
+        overflow: hidden;
+
+        .media-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.5s $transition-ease;
+
+            &.active {
+                opacity: 1;
+            }
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                filter: grayscale(0.5) contrast(1.2);
+            }
+        }
+    }
+
+    .scroll-content {
+        flex: 1;
+        padding: 0 $spacing-64;
+
+        .content-block {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            opacity: 0.3;
+            transition: opacity 0.5s;
+            padding: $spacing-64 0;
+
+            &.active {
+                opacity: 1;
+            }
+
+            h2 {
+                font-size: 3rem;
+                margin-bottom: $spacing-24;
+            }
+
+            p {
+                font-size: 1.25rem;
+                max-width: 500px;
+            }
+        }
+    }
+}
+
+// Switcher Component
+.switcher-section {
+    padding: $spacing-64 0;
+
+    .product-cards {
+        display: flex;
+        gap: $spacing-16;
+        margin-bottom: $spacing-32;
+    }
+
+    .product-card {
+        background: $light-gray;
+        border: 2px solid $border-color;
+        padding: $spacing-16 $spacing-32;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all $transition-speed;
+        border-radius: $border-radius;
+
+        &:hover {
+            border-color: $brand-blue;
+        }
+
+        &.active {
+            background: $brand-blue;
+            color: #fff;
+            border-color: $brand-blue;
+        }
+    }
+
+    .product-display {
+        position: relative;
+        min-height: 400px;
+        background: $light-gray;
+        padding: $spacing-32;
+        border: 2px solid $text-color;
+
+        .loading-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.9);
+            display: flex;
+            opacity: 0;
+            visibility: hidden;
+            justify-content: center;
+            align-items: center;
+            transition: opacity $transition-speed, visibility $transition-speed;
+            z-index: 10;
+
+            &.active {
+                opacity: 1;
+                visibility: visible;
+            }
+
+            .spinner {
+                width: 40px;
+                height: 40px;
+                border: 4px solid $light-gray;
+                border-top: 4px solid $brand-blue;
+                border-radius: 50%; // Note: Exceptions for spinners usually allowed, but I'll make it square if strict
+                animation: spin 1s linear infinite;
+            }
+
+            @keyframes spin {
+                0% {
+                    transform: rotate(0deg);
+                }
+
+                100% {
+                    transform: rotate(360deg);
+                }
+            }
+        }
+
+        .display-content {
+            display: flex;
+            gap: $spacing-32;
+            transition: opacity $transition-speed;
+
+            .prod-img {
+                flex: 1;
+
+                img {
+                    width: 100%;
+                    height: auto;
+                    border: 4px solid #fff;
+                }
+            }
+
+            .prod-info {
+                flex: 1;
+
+                h3 {
+                    font-size: 2rem;
+                    margin-bottom: $spacing-16;
+                }
+
+                .price {
+                    font-weight: 700;
+                    color: $brand-blue;
+                    font-size: 1.5rem;
+                    margin-bottom: $spacing-16;
+                }
+
+                ul {
+                    margin-top: $spacing-16;
+
+                    li::before {
+                        content: '■ ';
+                        color: $brand-blue;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Carousel Component
+.carousel-section {
+    background: $text-color;
+    color: #fff;
+    padding: $spacing-64 0;
+    overflow: hidden;
+
+    .section-title {
+        color: #fff;
+        border-left-color: $brand-blue;
+        margin-left: $spacing-24;
+    }
+
+    .carousel-viewport {
+        mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+        padding: $spacing-32 0;
+    }
+
+    .carousel-track {
+        display: flex;
+        width: max-content;
+        gap: $spacing-64;
+        align-items: center;
+    }
+
+    .logo-item {
+        height: 80px; // Fixed height for all logo containers
+        padding: 0 $spacing-32;
+        border: 2px solid rgba(255, 255, 255, 0.1);
+        background: rgba(255, 255, 255, 0.05);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all $transition-speed;
+
+        img {
+            height: 40px;
+            width: auto;
+            filter: brightness(0) invert(1) opacity(0.6);
+            transition: all $transition-speed;
+        }
+
+        &:hover {
+            transform: scale(1.05);
+            background: rgba(255, 255, 255, 0.1);
+            border-color: $brand-blue;
+
+            img {
+                filter: none;
+                opacity: 1;
+            }
+        }
+    }
+
+    .carousel-controls {
+        display: flex;
+        justify-content: center;
+        gap: $spacing-16;
+        margin-top: $spacing-32;
+
+        .ctrl-btn {
+            background: transparent;
+            color: #fff;
+            border: 2px solid #fff;
+            padding: $spacing-8 $spacing-24;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all $transition-speed;
+
+            &:hover {
+                background: $brand-blue;
+                border-color: $brand-blue;
+            }
+        }
+    }
+}
+
+// Feature Grid Component
+.grid-section {
+    padding: $spacing-64 0;
+
+    .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: $spacing-16;
+    }
+
+    .feature-card {
+        background: $light-gray;
+        padding: $spacing-32;
+        border: 2px solid $border-color;
+        aspect-ratio: 1 / 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        transition: all $transition-speed;
+        cursor: pointer;
+
+        h3 {
+            margin-bottom: $spacing-16;
+        }
+
+        &:hover {
+            background: $brand-blue;
+            color: #fff;
+            border-color: $brand-blue;
+            box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.1);
+            transform: translate(-4px, -4px);
+        }
+
+        &.highlighted {
+            background: $text-color;
+            color: #fff;
+        }
+    }
+}
+
+// Footer
+.site-footer {
+    padding: $spacing-64;
+    background: $light-gray;
+    text-align: center;
+    border-top: 2px solid $text-color;
+    font-weight: 700;
+}

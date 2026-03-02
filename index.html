@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Square Aesthetics Demo - Antigravity</title>
+    <link rel="stylesheet" href="styles/main.css"> <!-- Compiled from Scss -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+
+    <header class="site-header">
+        <h1 class="brand-logo">CORE_DEMO</h1>
+        <nav>
+            <ul>
+                <li><a href="#scrollytelling">Product</a></li>
+                <li><a href="#switcher">Switcher</a></li>
+                <li><a href="#carousel">Partners</a></li>
+                <li><a href="#grid">Features</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Component 1: Scrollytelling Product Layout -->
+        <section id="scrollytelling" class="scrollytelling-section">
+            <div class="scrolly-container">
+                <div class="sticky-media">
+                    <div class="media-layer active" data-content="section-1">
+                        <img src="https://images.unsplash.com/photo-1592078615290-033ee584e267?auto=format&fit=crop&w=1200&q=80"
+                            alt="Product View 1">
+                    </div>
+                    <div class="media-layer" data-content="section-2">
+                        <img src="https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?auto=format&fit=crop&w=1200&q=80"
+                            alt="Product View 2">
+                    </div>
+                    <div class="media-layer" data-content="section-3">
+                        <img src="https://images.unsplash.com/photo-1594620302200-9a762244a156?auto=format&fit=crop&w=1200&q=80"
+                            alt="Product View 3">
+                    </div>
+                </div>
+                <div class="scroll-content">
+                    <div class="content-block" id="section-1">
+                        <h2>Precision Design</h2>
+                        <p>Our products are built on a strict 8px/16px baseline grid, ensuring mathematical harmony in
+                            every dimension. Every edge is exactly 0px radius, following our core square aesthetic.</p>
+                    </div>
+                    <div class="content-block" id="section-2">
+                        <h2>Premium Materials</h2>
+                        <p>We source only the finest sustainable materials. Each piece is hand-finished to ensure the
+                            brand-blue accents are perfectly vibrant and consistent.</p>
+                    </div>
+                    <div class="content-block" id="section-3">
+                        <h2>User Centric</h2>
+                        <p>Experience the perfect blend of form and function. Our scrollytelling layout allows you to
+                            explore every detail without losing context.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr class="section-divider">
+
+        <!-- Component 2: AJAX Product Switcher -->
+        <section id="switcher" class="switcher-section">
+            <div class="container">
+                <h2 class="section-title">Explore Our Collection</h2>
+                <div class="product-cards">
+                    <button class="product-card active" data-product-id="product-1">Chair</button>
+                    <button class="product-card" data-product-id="product-2">Desk</button>
+                    <button class="product-card" data-product-id="product-3">Shelf</button>
+                </div>
+                <div id="product-display" class="product-display">
+                    <!-- Loaded via AJAX -->
+                    <div class="loading-overlay">
+                        <div class="spinner"></div>
+                    </div>
+                    <div class="display-content">
+                        <!-- Initial content or empty -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Component 3: Infinite Logo Carousel -->
+        <section id="carousel" class="carousel-section">
+            <h2 class="section-title">Trusted By Experts</h2>
+            <div class="carousel-viewport">
+                <div class="carousel-track">
+                    <div class="logo-item"><img src="images/Adobe.png" alt="Adobe"></div>
+                    <div class="logo-item"><img src="images/Amazon.png" alt="Amazon"></div>
+                    <div class="logo-item"><img src="images/Dell.png" alt="Dell"></div>
+                    <div class="logo-item"><img src="images/Google.png" alt="Google"></div>
+                    <div class="logo-item"><img src="images/MS.png" alt="Microsoft"></div>
+                    <div class="logo-item"><img src="images/SP.png" alt="Shopify"></div>
+                    <!-- Clones for infinite effect will be added via JS -->
+                </div>
+            </div>
+            <div class="carousel-controls">
+                <button id="prev-btn" class="ctrl-btn">PREV</button>
+                <button id="next-btn" class="ctrl-btn">NEXT</button>
+            </div>
+        </section>
+
+        <!-- Component 4: Interactive Feature Grid -->
+        <section id="grid" class="grid-section">
+            <div class="container">
+                <h2 class="section-title">Core Features</h2>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h3>MODULAR</h3>
+                        <p>Completely scalable systems.</p>
+                    </div>
+                    <div class="feature-card highlighted">
+                        <h3>SQUARE</h3>
+                        <p>0px border radius everywhere.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>BLUE</h3>
+                        <p>Brand-blue interactive states.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>GRID</h3>
+                        <p>8px/16px baseline consistency.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Core Demo. All rights reserved.</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="scripts/scrollytelling.js"></script>
+    <script src="scripts/switcher.js"></script>
+    <script src="scripts/carousel.js"></script>
+    <script src="scripts/main.js"></script>
+</body>
+
+</html>
