@@ -1,79 +1,99 @@
 /**
- * Component: AJAX Product Switcher
- * Loads product data from data/products.json using jQuery AJAX.
- * Handles race conditions and shows loading states.
+ * Component: Nike-Style State Manager (Vertex Pro)
+ * Uses high-speed state transitions and prefetching for instant UI updates.
  */
 
-$(document).ready(function () {
-    const $display = $('#product-display');
-    const $content = $display.find('.display-content');
-    const $loading = $display.find('.loading-overlay');
-    let isFetching = false;
-    let currentProductId = null;
+class VertexProState {
+    constructor() {
+        this.currentProductId = 'product-1';
+        this.products = [];
+        this.displayContainer = document.querySelector('.display-content');
+        this.loadingOverlay = document.querySelector('.loading-overlay');
+        this.init();
+    }
 
-    function loadProduct(productId) {
-        if (isFetching && currentProductId === productId) return;
+    async init() {
+        await this.prefetchData();
+        this.bindEvents();
+        this.renderProduct('product-1'); // Initial render
+        setTimeout(() => this.displayContainer.classList.add('loaded'), 100);
+    }
 
-        // Show loading state
-        $loading.addClass('active');
-        $content.css('opacity', '0.5');
-        isFetching = true;
-        currentProductId = productId;
+    async prefetchData() {
+        try {
+            const response = await fetch('data/products.json');
+            this.products = await response.json();
+        } catch (error) {
+            console.error('[VertexProState] Prefetch failed:', error);
+        }
+    }
 
-        // Simulate network delay for demo purposes
-        setTimeout(() => {
-            $.ajax({
-                url: 'data/products.json',
-                method: 'GET',
-                dataType: 'json',
-                success: function (data) {
-                    const product = data.find(p => p.id === productId);
-                    if (product) {
-                        renderProduct(product);
-                    } else {
-                        $content.html('<p>Product not found.</p>');
-                    }
-                },
-                error: function () {
-                    $content.html('<p>Error loading product data.</p>');
-                },
-                complete: function () {
-                    $loading.removeClass('active');
-                    $content.css('opacity', '1');
-                    isFetching = false;
+    bindEvents() {
+        document.querySelectorAll('.product-card').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const id = e.target.dataset.productId;
+                if (id !== this.currentProductId) {
+                    this.switchProduct(id);
                 }
             });
-        }, 500); // 500ms delay to see the loading state
+        });
     }
 
-    function renderProduct(product) {
+    switchProduct(id) {
+        // High-speed transition (flash and fade)
+        this.currentProductId = id;
+
+        // Update active state for buttons
+        document.querySelectorAll('.product-card').forEach(btn => {
+            btn.classList.toggle('active', btn.dataset.productId === id);
+        });
+
+        // Show loader and fade-out content
+        this.loadingOverlay.classList.add('active');
+        this.displayContainer.classList.remove('loaded');
+
+        // Render new product data (instantly from prefetched storage)
+        setTimeout(() => {
+            this.renderProduct(id);
+            this.displayContainer.classList.add('loaded');
+            this.loadingOverlay.classList.remove('active');
+        }, 600); // 600ms for visible loader impact
+    }
+
+    renderProduct(id) {
+        const product = this.products.find(p => p.id === id);
+        if (!product) return;
+
+        // Apply premium assets (mapping from filenames in images directory)
+        const imageMap = {
+            'product-1': 'images/product_1.png',
+            'product-2': 'images/product_2.png',
+            'product-3': 'images/product_3.jpg',
+            'product-4': 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&q=80'
+        };
+
         const html = `
-            <div class="prod-img">
-                <img src="${product.image}" alt="${product.name}">
+            <div class="prod-img-container">
+                <img src="${imageMap[id]}" alt="${product.name}">
             </div>
             <div class="prod-info">
+                <span class="tagline">PROTOCOL_GEN_01</span>
                 <h3>${product.name}</h3>
                 <p class="price">${product.price}</p>
-                <p>${product.description}</p>
-                <ul>
-                    ${product.features.map(f => `<li>${f}</li>`).join('')}
-                </ul>
+                <div class="specs">
+                    ${product.features.map(f => `
+                        <div class="spec-item">
+                            <span class="label">${f} <span class="val">${Math.floor(Math.random() * 20 + 80)}%</span></span>
+                            <div class="bar-bg"><div class="bar-fill" style="width: ${Math.floor(Math.random() * 20 + 80)}%"></div></div>
+                        </div>
+                    `).join('')}
+                </div>
             </div>
         `;
-        $content.html(html);
-        console.log(`[Switcher] Loaded: ${product.name}`);
+        this.displayContainer.innerHTML = html;
     }
+}
 
-    // Initial load
-    loadProduct('product-1');
-
-    // Click handlers
-    $('.product-card').on('click', function () {
-        const id = $(this).data('product-id');
-
-        $('.product-card').removeClass('active');
-        $(this).addClass('active');
-
-        loadProduct(id);
-    });
+document.addEventListener('DOMContentLoaded', () => {
+    window.vertexState = new VertexProState();
 });

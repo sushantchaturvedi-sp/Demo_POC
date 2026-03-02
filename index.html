@@ -4,127 +4,144 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Square Aesthetics Demo - Antigravity</title>
-    <link rel="stylesheet" href="styles/main.css"> <!-- Compiled from Scss -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <title>Vertex Pro | Precision Redefined</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Outfit:wght@300;600;800&display=swap"
+        rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body>
 
-    <header class="site-header">
-        <h1 class="brand-logo">CORE_DEMO</h1>
-        <nav>
-            <ul>
-                <li><a href="#scrollytelling">Product</a></li>
-                <li><a href="#switcher">Switcher</a></li>
-                <li><a href="#carousel">Partners</a></li>
-                <li><a href="#grid">Features</a></li>
-            </ul>
-        </nav>
-    </header>
+
+
 
     <main>
-        <!-- Component 1: Scrollytelling Product Layout -->
-        <section id="scrollytelling" class="scrollytelling-section">
+        <!-- Component 2: Cinematic Scrollytelling -->
+        <section id="scrolly" class="scrollytelling-section">
             <div class="scrolly-container">
                 <div class="sticky-media">
                     <div class="media-layer active" data-content="section-1">
-                        <img src="https://images.unsplash.com/photo-1592078615290-033ee584e267?auto=format&fit=crop&w=1200&q=80"
-                            alt="Product View 1">
+                        <img src="images/lifestyle_1.png" alt="Lifestyle View 1">
                     </div>
                     <div class="media-layer" data-content="section-2">
-                        <img src="https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?auto=format&fit=crop&w=1200&q=80"
-                            alt="Product View 2">
+                        <img src="images/lifestyle_2.png" alt="Lifestyle View 2">
                     </div>
                     <div class="media-layer" data-content="section-3">
-                        <img src="https://images.unsplash.com/photo-1594620302200-9a762244a156?auto=format&fit=crop&w=1200&q=80"
-                            alt="Product View 3">
+                        <img src="images/lifestyle_3.png" alt="Lifestyle View 3">
                     </div>
                 </div>
                 <div class="scroll-content">
                     <div class="content-block" id="section-1">
-                        <h2>Precision Design</h2>
-                        <p>Our products are built on a strict 8px/16px baseline grid, ensuring mathematical harmony in
-                            every dimension. Every edge is exactly 0px radius, following our core square aesthetic.</p>
+                        <div class="accent-line"></div>
+                        <h2>Haptic <br>Integration</h2>
+                        <p>Feel the response of every interaction. Our haptic feedback engine provides tactile
+                            confirmation for every adjustment, creating a physical bond between creator and tool.</p>
                     </div>
                     <div class="content-block" id="section-2">
-                        <h2>Premium Materials</h2>
-                        <p>We source only the finest sustainable materials. Each piece is hand-finished to ensure the
-                            brand-blue accents are perfectly vibrant and consistent.</p>
+                        <div class="accent-line"></div>
+                        <h2>Bio-Adaptive <br>Material</h2>
+                        <p>Engineered to evolve with you. Materials that respond to heat and pressure, custom-forming to
+                            your biological signature for unprecedented comfort during long sessions.</p>
                     </div>
                     <div class="content-block" id="section-3">
-                        <h2>User Centric</h2>
-                        <p>Experience the perfect blend of form and function. Our scrollytelling layout allows you to
-                            explore every detail without losing context.</p>
+                        <div class="accent-line"></div>
+                        <h2>Architectural <br>Purity</h2>
+                        <p>Stripping away the unnecessary. Every line serves a purpose; every surface carries weight.
+                            The ultimate workspace for those who define the next era.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <hr class="section-divider">
-
-        <!-- Component 2: AJAX Product Switcher -->
-        <section id="switcher" class="switcher-section">
+        <!-- Component 3: AJAX Product Switcher -->
+        <section id="switcher" class="switcher-section" data-reveal>
             <div class="container">
-                <h2 class="section-title">Explore Our Collection</h2>
+                <h2 class="section-title">The Collection</h2>
                 <div class="product-cards">
-                    <button class="product-card active" data-product-id="product-1">Chair</button>
-                    <button class="product-card" data-product-id="product-2">Desk</button>
+                    <button class="product-card active" data-product-id="product-1">Command</button>
+                    <button class="product-card" data-product-id="product-2">Horizon</button>
                     <button class="product-card" data-product-id="product-3">Shelf</button>
+                    <button class="product-card" data-product-id="product-4">Console</button>
                 </div>
                 <div id="product-display" class="product-display">
-                    <!-- Loaded via AJAX -->
                     <div class="loading-overlay">
+                        <div class="shimmer"></div>
                         <div class="spinner"></div>
                     </div>
                     <div class="display-content">
-                        <!-- Initial content or empty -->
+                        <!-- Loaded via VertexProState -->
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Component 3: Infinite Logo Carousel -->
-        <section id="carousel" class="carousel-section">
-            <h2 class="section-title">Trusted By Experts</h2>
+        <!-- Component 4: Infinite Masonry Feed -->
+        <section id="carousel" class="carousel-section" data-reveal>
+            <h2 class="section-title">Lifestyle Feed</h2>
             <div class="carousel-viewport">
-                <div class="carousel-track">
-                    <div class="logo-item"><img src="images/Adobe.png" alt="Adobe"></div>
-                    <div class="logo-item"><img src="images/Amazon.png" alt="Amazon"></div>
-                    <div class="logo-item"><img src="images/Dell.png" alt="Dell"></div>
-                    <div class="logo-item"><img src="images/Google.png" alt="Google"></div>
-                    <div class="logo-item"><img src="images/MS.png" alt="Microsoft"></div>
-                    <div class="logo-item"><img src="images/SP.png" alt="Shopify"></div>
-                    <!-- Clones for infinite effect will be added via JS -->
+                <div class="carousel-track masonry-feed">
+                    <div class="feed-item masonry-lg">
+                        <img src="images/lifestyle_1.png" alt="Lifestyle 1">
+                    </div>
+                    <div class="feed-item masonry-sm">
+                        <img src="images/product_1.png" alt="Product 1">
+                    </div>
+                    <div class="feed-item masonry-md">
+                        <img src="images/lifestyle_2.png" alt="Lifestyle 2">
+                    </div>
+                    <div class="feed-item masonry-lg">
+                        <img src="images/product_2.png" alt="Product 2">
+                    </div>
+                    <div class="feed-item masonry-sm">
+                        <img src="images/lifestyle_3.png" alt="Lifestyle 3">
+                    </div>
                 </div>
-            </div>
-            <div class="carousel-controls">
-                <button id="prev-btn" class="ctrl-btn">PREV</button>
-                <button id="next-btn" class="ctrl-btn">NEXT</button>
             </div>
         </section>
 
-        <!-- Component 4: Interactive Feature Grid -->
-        <section id="grid" class="grid-section">
+        <!-- Component 5: Interactive Feature Grid -->
+        <section id="grid" class="grid-section" data-reveal>
             <div class="container">
-                <h2 class="section-title">Core Features</h2>
-                <div class="feature-grid">
-                    <div class="feature-card">
-                        <h3>MODULAR</h3>
-                        <p>Completely scalable systems.</p>
+                <div class="section-header">
+                    <h2 class="section-title">Protocol Core</h2>
+                    <div class="view-toggle">
+                        <button id="grid-view" class="active">GRID</button>
+                        <button id="list-view">LIST</button>
                     </div>
-                    <div class="feature-card highlighted">
-                        <h3>SQUARE</h3>
-                        <p>0px border radius everywhere.</p>
+                </div>
+                <div id="feature-grid" class="feature-grid view-grid">
+                    <div class="feature-card" style="--x: 50%; --y: 50%;">
+                        <h3>HAPTIC_SYNC</h3>
+                        <p>Real-time physical confirmation for digital workflows.</p>
                     </div>
-                    <div class="feature-card">
-                        <h3>BLUE</h3>
-                        <p>Brand-blue interactive states.</p>
+                    <div class="feature-card" style="--x: 50%; --y: 50%;">
+                        <h3>ADAPTIVE_FLOW</h3>
+                        <p>Dynamic ergonomics that evolve with your posture.</p>
                     </div>
-                    <div class="feature-card">
-                        <h3>GRID</h3>
-                        <p>8px/16px baseline consistency.</p>
+                    <div class="feature-card" style="--x: 50%; --y: 50%;">
+                        <h3>CORE_GLASS</h3>
+                        <p>Aero-grade transparent materials for structural lightness.</p>
+                    </div>
+                    <div class="feature-card" style="--x: 50%; --y: 50%;">
+                        <h3>NEON_PULSE</h3>
+                        <p>Reactive lighting that syncs with your cognitive load.</p>
+                    </div>
+                    <div class="feature-card" style="--x: 50%; --y: 50%;">
+                        <h3>SYNAPTIC_OVERDRIVE</h3>
+                        <p>High-speed processing feedback for intensive workflows.</p>
+                    </div>
+                    <div class="feature-card" style="--x: 50%; --y: 50%;">
+                        <h3>KINETIC_DAMPENING</h3>
+                        <p>Vibration-isolated work surface for absolute stability.</p>
+                    </div>
+                    <div class="feature-card" style="--x: 50%; --y: 50%;">
+                        <h3>THERMAL_EQUILIBRIUM</h3>
+                        <p>Active temperature-controlled zones for hardware longevity.</p>
+                    </div>
+                    <div class="feature-card" style="--x: 50%; --y: 50%;">
+                        <h3>ARCHITECTURAL_VOID</h3>
+                        <p>Negative space optimization for seamless cable management.</p>
                     </div>
                 </div>
             </div>
@@ -132,7 +149,43 @@
     </main>
 
     <footer class="site-footer">
-        <p>&copy; 2026 Core Demo. All rights reserved.</p>
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <div class="brand-logo">VERTEX</div>
+                <p>Architecting the spaces where legends are born. Precision, performance, and pure aesthetics.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Evolution</h4>
+                <ul>
+                    <li><a href="#">Haptic Sync</a></li>
+                    <li><a href="#">Adaptive Flow</a></li>
+                    <li><a href="#">Material Tech</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="#">Our Lab</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4>Stay Synced</h4>
+                <div class="newsletter glass">
+                    <input type="email" placeholder="Email coordinates...">
+                    <button>→</button>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 VERTEX PRO. ALL RIGHTS RESERVED.</p>
+            <div class="footer-social">
+                <a href="#">IG</a>
+                <a href="#">TW</a>
+                <a href="#">LN</a>
+            </div>
+        </div>
     </footer>
 
     <!-- Scripts -->
